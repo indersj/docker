@@ -1,0 +1,22 @@
+---
+version: "1"
+services:
+  server:
+    build:
+      context: ./server
+    ports:
+      - "3080:3080"
+    container_name: node-server
+    volumes:
+      - /server
+      - /server/node_modules
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    container_name: react-client
+    stdin_open: true
+    volumes:
+      - /client
+      - /client/node_modules
